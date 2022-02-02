@@ -1,0 +1,17 @@
+.navbar {
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+}
+
+.navbar-brand {
+  font-size: 35px;
+  font-family: 'Comforter', cursive;
+  font-weight: 700;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.card {
+  width: 18rem; /* 16px 18  */
+}
