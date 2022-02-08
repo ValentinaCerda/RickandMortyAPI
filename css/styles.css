@@ -10,8 +10,60 @@
 
 body {
   font-family: 'Nunito Sans', sans-serif;
+  background-color: rgb(248, 213, 245);
+}
+
+.personajes {
+  margin: auto 20rem;
 }
 
 .card {
   width: 18rem; /* 16px 18  */
+}
+
+.btn-secondary {
+  background-color: tomato;
+  border: none;
+}
+
+.contenedor {
+  margin: 10px 30%;
+}
+
+.imgPersonaje {
+  margin-top: 2rem;
+  border-radius: 30px;
+  border: groove 1em yellow;
+}
+
+.col-auto {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+.card-title {
+  font-family: 'Comforter', cursive;
+  font-size: 40px;
+}
+.card-title-personaje {
+  font-family: 'Comforter', cursive;
+  font-size: 80px;
+}
+.card-footer {
+  border: none;
+  border-color: blue;
+  border-style: dashed;
+  background: none;
+  text-align: center;
+}
+.alive {
+  color: rgb(29, 219, 29);
+}
+.dead {
+  color: red;
+}
+.none {
+  color: gray;
 }

@@ -39,24 +39,22 @@
       </div>
     </div>
   </nav>
-  <!-- // html
   
-    
-
-   
-  
-    imgPersonaje.href=`personaje.html?id=${character.id}`;
-
-   -->
-  <h1></h1>
-  <div class="container">
+  <div class="container contenedor">
     <div class="row">
       <div class="col-auto container-center mt-4">
-        <img src="" alt="">
+        <img class="imgPersonaje" src="" alt="">
       </div>
       <div class="col-auto" id="informacion">
-        <h2></h2>
-        <p></p>
+        <div class="card-body">
+          <h2 class="card-title-personaje"></h2>
+          <p class="card-text"></p>
+          <p class="genero"></p>
+          <p class="locacion"></p>
+        </div>
+        <div class="card-footer">
+          
+        </div>
       </div>
     </div>
   </div>
@@ -64,46 +62,58 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
   <script>
+    const nameCharacter = document.querySelector('h2');
     const imgPersonaje = document.querySelector('img');
-    const divInformacion = document.querySelector('#informacion');
-    const infoPersonaje = document.querySelector('p');
-
-    const nameCharacter = document.querySelector('h1');
+    const divInformacion = document.querySelector('.card-text');
+    const footerCard = document.querySelector('.card-footer');
+    const generoPersonaje = document.querySelector('.genero');
+    const locacionPersonaje = document.querySelector('.locacion');
+   // const nameCharacter = document.querySelector('h1');
     // console.log(this);
     // http://127.0.0.1:5500/personaje.html?id=2
     // ?id=2 : esto es un parametro
     const parametro = window.location.search;
-    console.log(parametro); // ?id=2
+    //console.log(parametro); // ?id=2
     const urlParams = new URLSearchParams(parametro);
     let id = urlParams.get('id');
-    console.log(id); // 2
+    //console.log(id); // 2
 
     // función que hace la petición del personaje por ID
     const getCharacterById = async (id) => {
       //'https://rickandmortyapi.com/api/character/'+ id = https://rickandmortyapi.com/api/character/2
-      try {
+      //try 
         const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`); // = https://rickandmortyapi.com/api/character/2
         const data = response.json(); 
         return data;
-      } catch (error) {
-        console.log(error);
-      }
-      
+       // catch (error) 
+       // console.log(error);
       
     }
 
     // llamado a la función 
     getCharacterById(id).then( data => {
-      console.log(data);
+      // console.log(data);
       nameCharacter.innerText = data.name
+      imgPersonaje.src = data.image;
+      footerCard.innerText = data.status;
+      if (data.status === 'Alive') {
+        footerCard.classList.add('alive');
+      } else if (data.status === 'Dead') {
+        footerCard.classList.add('dead');
+      } else {
+        footerCard.classList.add('none');
+      }
+
+      divInformacion.innerText = "Specie: " + data.species;
+      generoPersonaje.innerText = "Gender: " + data.gender;
+      locacionPersonaje.innerText = "Location: " + data.location.name;
+      footerCard.innerText = "Status: " + data.status;
     }).catch(err => err);
-
-
 
     // petición al api pero por id
     //https://rickandmortyapi.com/api/character/1
   </script>
 
-  <script src="js/renderizar.js" type="module"></script>
+  
 </body>
 </html>
